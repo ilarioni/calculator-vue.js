@@ -126,9 +126,10 @@ export default {
 }
 
 .btn {
-  background-color: #eee;
-  border: 1px solid #999;
+  background-color: rgb(241, 72, 191);
+  border: 1px solid rgb(20, 20, 20);
   border-radius: 10px;
+  color: white;
 }
 
 .operator {
@@ -139,6 +140,14 @@ export default {
 .text {
   color: white;
   text-shadow: 2px 2px 4px #000000;
+}
+
+h1 {
+  font-size: 45px;
+}
+
+h3 {
+  font-size: 20px;
 }
 
 </style>
