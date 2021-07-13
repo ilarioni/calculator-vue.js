@@ -5,10 +5,10 @@
   </div>
 
   <div class="calculator">
-    <div class="display"> <div class="number"> {{ current }} </div> </div>
-    <div class="btn">AC</div>
-    <div class="btn">+/-</div>
-    <div class="btn">%</div>
+    <div class="display"> <div class="number"> {{ current || '0' }} </div> </div>
+    <div @click="clear" class="btn">AC</div>
+    <div @click="sign" class="btn">+/-</div>
+    <div @click="percent" class="btn">%</div>
     <div class="btn operator">÷</div>
     <div class="btn">7</div>
     <div class="btn">8</div>
@@ -32,7 +32,18 @@
 export default {
   data() {
     return {
-      current: '0',
+      current: '12121',
+    }
+  },
+  methods: {
+    clear() {
+      this.current = '';
+    },
+    sign() {
+      this.current = this.current.charAt(0) === '-' ? this.current.slice(1) : `- ${this.current}`;
+    },
+    percent() {
+      this.current = `${parseFloat(this.current) / 100}`;
     }
   }
 }
