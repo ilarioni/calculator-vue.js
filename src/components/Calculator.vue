@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h1> Hello World! </h1>
+    <h1 class="text"> Hello World! </h1>
     <h3> This is new era of Calculator </h3>
   </div>
 
@@ -10,20 +10,20 @@
     <div @click="sign" class="btn">+/-</div>
     <div @click="percent" class="btn">%</div>
     <div class="btn operator">÷</div>
-    <div class="btn">7</div>
-    <div class="btn">8</div>
-    <div class="btn">9</div>
+    <div @click="append('7')" class="btn">7</div>
+    <div @click="append('8')" class="btn">8</div>
+    <div @click="append('9')" class="btn">9</div>
     <div class="btn operator">x</div>
-    <div class="btn">4</div>
-    <div class="btn">5</div>
-    <div class="btn">6</div>
+    <div @click="append('4')" class="btn">4</div>
+    <div @click="append('5')" class="btn">5</div>
+    <div @click="append('6')" class="btn">6</div>
     <div class="btn operator">-</div>
-    <div class="btn">1</div>
-    <div class="btn">2</div>
-    <div class="btn">3</div>
+    <div @click="append('1')" class="btn">1</div>
+    <div @click="append('2')" class="btn">2</div>
+    <div @click="append('3')" class="btn">3</div>
     <div class="btn operator">+</div>
-    <div class=" btn zero">0</div>
-    <div class="btn">.</div>
+    <div @click="append('0')" class=" btn zero">0</div>
+    <div @click="dot" class="btn">.</div>
     <div class="btn operator">=</div>
   </div>
 </template>
@@ -32,7 +32,7 @@
 export default {
   data() {
     return {
-      current: '12121',
+      current: '',
     }
   },
   methods: {
@@ -44,7 +44,15 @@ export default {
     },
     percent() {
       this.current = `${parseFloat(this.current) / 100}`;
-    }
+    },
+    append(number) {
+      this.current = `${this.current}${number}`;
+    },
+    dot() {
+      if (this.current.indexOf('.') === -1) {
+        this.append('.');
+      }
+    } 
   }
 }
 </script>
@@ -73,7 +81,7 @@ export default {
 }
 
 .number {
-  width: 25%;
+  width: 55%;
   margin: 30px auto;
   padding: 10px;
   background: #000000;
@@ -95,6 +103,11 @@ export default {
 .operator {
   background-color: rgb(71, 194, 173);
   color: rgb(0, 17, 252);
+}
+
+.text {
+  color: white;
+  text-shadow: 2px 2px 4px #000000;
 }
 
 </style>
