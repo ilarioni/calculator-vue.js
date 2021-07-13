@@ -5,7 +5,7 @@
   </div>
 
   <div class="calculator">
-    <div class="display"> <div class="number"> random number </div> </div>
+    <div class="display"> <div class="number"> {{ current }} </div> </div>
     <div class="btn">AC</div>
     <div class="btn">+/-</div>
     <div class="btn">%</div>
@@ -30,23 +30,35 @@
 
 <script>
 export default {
+  data() {
+    return {
+      current: '0',
+    }
+  }
 }
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
 .calculator {
+  width: 500px;
+  margin: 0 auto;
   display: grid; 
   grid-template-columns: repeat(4, 1fr);
   grid-auto-rows: minmax(50px, auto); 
+  align-items: center;
+ 
 }
 
 .display {
   font-size: 40px;
   grid-column: 1 / 5;
+  /* background: #f9d72f; */
   background: linear-gradient( #f9d72f, #e0a82e);
   /* #e0a82e */
   color: rgb(235, 215, 215); 
+  /* border-radius: 35% 35%; */ 
+  border-radius: 30px;
 }
 
 .number {
@@ -65,7 +77,8 @@ export default {
 
 .btn {
   background-color: #eee;
-  border: 1px solid #333;
+  border: 1px solid #999;
+  border-radius: 10px;
 }
 
 .operator {
